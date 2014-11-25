@@ -1,0 +1,26 @@
+{
+  "name": "swipe-layers",
+  "version": "0.0.1",
+  "description": "Module for swiping between layers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-js": "browserify js/main.js | uglifyjs -mc > build/bundle.js",
+    "watch-js": "watchify js/main.js -o build/bundle.js -dv",
+    "build": "npm run build-js",
+    "watch": "npm run watch-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kamicut/swipe-layers.git"
+  },
+  "author": "Marc Farra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kamicut/swipe-layers/issues"
+  },
+  "homepage": "https://github.com/kamicut/swipe-layers",
+  "dependencies": {
+    "mapbox.js": "^2.1.4"
+  }
+}
