@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cp-static": "cp example/index.html gh-pages/index.html && cp example/style.css gh-pages/style.css",
+    "cp-static": "cp example/index.html gh-pages/index.html",
     "build-example": "browserify example/simple-swipe.js | uglifyjs -mc > gh-pages/simple-swipe.js",
     "watch-example": "(cd ./example; beefy simple-swipe.js --live)",
     "build": "npm run cp-static && npm run build-example",
