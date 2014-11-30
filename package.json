@@ -23,7 +23,15 @@
   },
   "homepage": "https://github.com/kamicut/swipe-layers",
   "dependencies": {
+    "brfs": "^1.2.0",
     "extend": "^2.0.0",
+    "fs": "0.0.2",
+    "insert-css": "^0.2.0",
     "mapbox.js": "^2.1.4"
+  },
+  "browserify": {
+    "transform": [
+      "brfs"
+    ]
   }
 }

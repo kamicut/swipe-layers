@@ -3,12 +3,15 @@
 //
 require('mapbox.js');
 var extend = require('extend')
+var fs = require('fs')
+var insertStyle = require('insert-css')
+var html = fs.readFileSync(__dirname + '/static/component.html', 'utf8');
+var css = fs.readFileSync(__dirname + '/static/style.css', 'utf8');
+var mapboxCSS = fs.readFileSync(__dirname + '/static/mapbox.css', 'utf8');
 
-module.exports = function Swiper(documentId, opts) {
+module.exports = function Swiper(target, opts) {
 	'use strict';
-	if (!(this instanceof Swiper)) return new Swiper(documentId, opts);
-
-	var element = document.querySelector(documentId)
+	if (!(this instanceof Swiper)) return new Swiper(target, opts);
 
 	//Default options
 	var defaults = {
@@ -19,13 +22,18 @@ module.exports = function Swiper(documentId, opts) {
 		zoomControl: true
 	}
 	opts = extend(defaults, opts || {});
+	insertStyle(mapboxCSS);
+ 	insertStyle(css);
+
+	var target = document.querySelector(target)
+	target.innerHTML = html;
 
 	L.mapbox.accessToken = 'pk.eyJ1Ijoia2FtaWN1dCIsImEiOiJMVzF2NThZIn0.WO0ArcIIzYVioen3HpfugQ';
-	var map = L.mapbox.map(element.querySelector('.swipe-layers-map'));
+	var map = L.mapbox.map(target.querySelector('.swipe-layers-map'));
 	L.mapbox.tileLayer(opts.left).addTo(map);
 
 	var overlay = L.mapbox.tileLayer(opts.right).addTo(map);
-	var range = element.querySelector('.swipe-layers-range')
+	var range = target.querySelector('.swipe-layers-range')
 
 	function clip() {
 	  var nw = map.containerPointToLayerPoint([0, 0]),
@@ -46,7 +54,7 @@ module.exports = function Swiper(documentId, opts) {
 		map.scrollWheelZoom.disable();
 		map.boxZoom.disable();
 		map.keyboard.disable();
-		document.querySelector('.leaflet-control-zoom').style['visibility'] = 'hidden'
+		target.querySelector('.leaflet-control-zoom').style['visibility'] = 'hidden'
 	}
 
 	clip();
