@@ -1,14 +1,28 @@
+// Code for swiping between layers from Mapbox Examples
+// https://www.mapbox.com/mapbox.js/example/v1.0.0/swipe-layers/
+//
 require('mapbox.js');
+var extend = require('extend')
 
 module.exports = function Swiper(documentId, opts) {
 	'use strict';
 	if (!(this instanceof Swiper)) return new Swiper(documentId, opts);
 
+	//Default options
+	var defaults = {
+		left: 'examples.map-i87786ca', 
+		right: 'examples.map-i875mjb7',
+		centroid: [49.434,-123.272],
+		zoom: 7,
+		zoomControl: true
+	}
+	opts = extend(defaults, opts || {});
+
 	L.mapbox.accessToken = 'pk.eyJ1Ijoia2FtaWN1dCIsImEiOiJMVzF2NThZIn0.WO0ArcIIzYVioen3HpfugQ';
 	var map = L.mapbox.map(documentId);
-	L.mapbox.tileLayer(opts.original).addTo(map);
+	L.mapbox.tileLayer(opts.left).addTo(map);
 
-	var overlay = L.mapbox.tileLayer(opts.overlay).addTo(map);
+	var overlay = L.mapbox.tileLayer(opts.right).addTo(map);
 	var range = document.getElementById('range');
 
 	function clip() {

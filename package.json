@@ -11,7 +11,6 @@
     "build": "npm run cp-static && npm run build-example",
     "watch": "npm run watch-example",
     "deploy": "git subtree push --prefix gh-pages origin gh-pages"
-
   },
   "repository": {
     "type": "git",
@@ -24,6 +23,7 @@
   },
   "homepage": "https://github.com/kamicut/swipe-layers",
   "dependencies": {
+    "extend": "^2.0.0",
     "mapbox.js": "^2.1.4"
   }
 }
