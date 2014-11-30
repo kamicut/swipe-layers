@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-js": "browserify js/main.js | uglifyjs -mc > build/bundle.js",
-    "watch-js": "watchify js/main.js -o build/bundle.js -dv",
+    "watch-js": "(cd ./example; beefy simple-swipe.js --live)",
     "build": "npm run build-js",
     "watch": "npm run watch-js"
   },
