@@ -8,6 +8,8 @@ module.exports = function Swiper(documentId, opts) {
 	'use strict';
 	if (!(this instanceof Swiper)) return new Swiper(documentId, opts);
 
+	var element = document.querySelector(documentId)
+
 	//Default options
 	var defaults = {
 		left: 'examples.map-i87786ca', 
@@ -19,11 +21,11 @@ module.exports = function Swiper(documentId, opts) {
 	opts = extend(defaults, opts || {});
 
 	L.mapbox.accessToken = 'pk.eyJ1Ijoia2FtaWN1dCIsImEiOiJMVzF2NThZIn0.WO0ArcIIzYVioen3HpfugQ';
-	var map = L.mapbox.map(documentId);
+	var map = L.mapbox.map(element.querySelector('.swipe-layers-map'));
 	L.mapbox.tileLayer(opts.left).addTo(map);
 
 	var overlay = L.mapbox.tileLayer(opts.right).addTo(map);
-	var range = document.getElementById('range');
+	var range = element.querySelector('.swipe-layers-range')
 
 	function clip() {
 	  var nw = map.containerPointToLayerPoint([0, 0]),
