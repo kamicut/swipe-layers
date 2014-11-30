@@ -1,12 +1,17 @@
 var swiper = require('../')
 var domready = require("domready");
+var qs = require('qs');
 
 domready(function() {
-	var srinagar = swiper('#map', {
-		left: 'devseed.SrinagarAfterFC', 
-		right: 'devseed.SrinagarFCBefore',
-		centroid: [34.0411824,74.8130321],
-		zoom: 11,
-		zoomControl: false
-	});
+	var params = qs.parse(window.location.href.slice(window.location.href.indexOf('?') + 1));
+	if (params.centroid) {
+		params.centroid = params.centroid.split(',');
+	}
+	if (params.zoomControl) {
+		if (params.zoomControl === 'true') params.zoomControl = true;
+		else params.zoomControl = false;
+	}
+	console.log(params);
+
+	var srinagar = swiper('#map', params);
 })	
