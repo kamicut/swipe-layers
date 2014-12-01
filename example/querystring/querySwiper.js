@@ -1,4 +1,4 @@
-var swiper = require('../')
+var swiper = require('../../')
 var domready = require("domready");
 var qs = require('qs');
 
@@ -11,7 +11,6 @@ domready(function() {
 		if (params.zoomControl === 'true') params.zoomControl = true;
 		else params.zoomControl = false;
 	}
-	console.log(params);
 
-	var srinagar = swiper('#map', params);
+	var querySwiper = swiper('#map', params);
 })	

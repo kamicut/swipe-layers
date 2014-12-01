@@ -19,7 +19,7 @@ module.exports = function Swiper(target, opts) {
 		right: 'examples.map-i875mjb7',
 		centroid: [49.434,-123.272],
 		zoom: 7,
-		zoomControl: true
+		zoomControl: false
 	}
 	opts = extend(defaults, opts || {});
 	insertStyle(mapboxCSS);
