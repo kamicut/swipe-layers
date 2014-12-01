@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cp-static": "cp example/querystring/index.html gh-pages/index.html",
+    "cp-static": "cp example/querystring/*.html gh-pages/ && cp example/querystring/*.css gh-pages",
     "build-example": "browserify example/querystring/querySwiper.js | uglifyjs -mc > gh-pages/querySwiper.js",
     "watch-example": "(cd ./example/querystring; beefy querySwiper.js --live)",
     "build": "npm run cp-static && npm run build-example",
@@ -33,5 +33,11 @@
     "transform": [
       "brfs"
     ]
+  },
+  "devDependencies": {
+    "beefy": "^2.1.1",
+    "domready": "^1.0.7",
+    "hut-modal": "^0.1.1",
+    "qs": "^2.3.3"
   }
 }

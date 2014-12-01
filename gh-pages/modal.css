@@ -1,0 +1,54 @@
+.hut-modal {
+    position: fixed;
+    overflow: hidden;
+
+    /* Position 100% above the screen so it can slide down */
+    top: -100%;
+    left: 0;
+
+    /* Hide modal until it is shown */
+    height: 0;
+    width: 100%;
+
+    z-index: 100;
+
+    /* Slide down from top */
+    /* Wait until it is slid up to change the height */
+    transition: top 0.3s, height 0s 0.3s;
+
+    background-color: rgba(238, 238, 238, 0.8);
+}
+
+.hut-modal.modal-shown {
+    top: 0;
+    height: 100%;
+    overflow: auto;
+
+    /* Offset for the dialog */
+    padding: 2rem 1rem;
+
+    /* Slide down from the top */
+    /* Do not transition height when closing */
+    transition: top 0.3s;
+}
+
+.hut-modal .modal-dialog {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #FFF;
+    border: 1px solid #999;
+}
+
+.hut-modal .modal-header {
+    margin: 0 1rem;
+}
+
+.hut-modal .modal-content {
+    margin: 0 1rem;
+    overflow: hidden;
+}
+
+.hut-modal .modal-footer {
+    margin: 0 1rem 1rem 1rem;
+    text-align: right;
+}
