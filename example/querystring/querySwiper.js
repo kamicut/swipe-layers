@@ -9,7 +9,8 @@ domready(function() {
 		'?left=devseed.SrinagarAfterFC' + 
 		'&right=devseed.SrinagarFCBefore' + 
 		'&centroid=34.04,74.81' + 
-		'&zoom=11'
+		'&zoom=11' + 
+		'&enableInfo=true'
 	}
 	var params = qs.parse(window.location.href.slice(window.location.href.indexOf('?') + 1));
 	if (params.centroid) {
@@ -19,11 +20,17 @@ domready(function() {
 		if (params.zoomControl === 'true') params.zoomControl = true;
 		else params.zoomControl = false;
 	}
-
+	if (params.enableInfo) {
+		var button = document.createElement('button')
+		button.id = 'info';
+		button.innerHTML = '?'
+		document.body.appendChild(button)
+		console.log('here')
+		var infoModal = modal(document.querySelector('#modal'));
+		button.onclick = function() {
+			infoModal.show();
+		}
+	}
 	var querySwiper = swiper('#map', params);
 
-	var infoModal = modal(document.querySelector('#modal'));
-	document.querySelector('#info').onclick = function() {
-		infoModal.show();
-	}
 })	
