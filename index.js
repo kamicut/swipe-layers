@@ -30,9 +30,9 @@ module.exports = function Swiper(target, opts) {
 
 	L.mapbox.accessToken = 'pk.eyJ1Ijoia2FtaWN1dCIsImEiOiJMVzF2NThZIn0.WO0ArcIIzYVioen3HpfugQ';
 	var map = L.mapbox.map(target.querySelector('.swipe-layers-map'));
-	L.mapbox.tileLayer(opts.left).addTo(map);
+	L.mapbox.tileLayer(opts.right).addTo(map);
 
-	var overlay = L.mapbox.tileLayer(opts.right).addTo(map);
+	var overlay = L.mapbox.tileLayer(opts.left).addTo(map);
 	var range = target.querySelector('.swipe-layers-range')
 
 	function clip() {
