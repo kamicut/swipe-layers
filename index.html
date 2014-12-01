@@ -2,12 +2,59 @@
 <head>
 	<title>Swipe between two layers</title>
 	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	<link rel="stylesheet" type="text/css" href="modal.css">
 </head>
 <style>
 	body { margin: 0; padding: 0;}
+	#info { 
+		z-index: 99; 
+		position:absolute; top: 10; left: 10; 
+		border-radius: 10px;
+		width: 20px;
+		height: 20px;
+	}
+	button {
+		color: black;
+		background-color: rgba(255,255,255, 0.5);
+		box-shadow: none;
+		text-shadow: none;
+		border-width: 1px;
+		border-color: black;
+		focus: none;
+	}
+	button:focus { outline: none; }
 </style>
 <body>
 	<div id="map"></div>
+	<button id='info'>?</button>
+
+	<div id="modal" class="hut-modal">
+    <div class="modal-dialog">
+        <section class="modal-content">
+            <p>Swipe Layer tool by <a target='_blank' href='http://kamicut.cc'>@kamicut</a></p>
+            <p>Use the URL bar to input two mapbox IDs, a centerpoint and a zoom level in the form 
+
+            <blockquote><em>?param1=value1&amp;param2=value2</em></blockquote>
+        </p>
+
+            <p>
+            Parameters
+            <ul>
+            	<li>left: the left mapbox ID</li>
+            	<li>right: the right mapbox ID</li>
+            	<li>zoom: the zoom level</li>
+            	<li>centroid: latitude, longitude</li>
+            	<li>zoomControl: default is false, enable/disable zooming</li>
+            </ul>
+
+       		</p>
+
+        </section>
+        <footer class="modal-footer">
+            <button data-result="cancel">Close</button>
+        </footer>
+    </div>
+</div>
 	<script src='querySwiper.js'></script>
 </body>
 </html>
