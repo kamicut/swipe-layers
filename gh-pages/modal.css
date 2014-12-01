@@ -33,7 +33,7 @@
 }
 
 .hut-modal .modal-dialog {
-    max-width: 400px;
+    max-width: 80%;
     margin: 0 auto;
     background-color: #FFF;
     border: 1px solid #999;
